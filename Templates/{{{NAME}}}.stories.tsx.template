@@ -1,0 +1,18 @@
+import React from "react";
+import { {{{NAME}}} } from ".";
+import { Decorator } from "../../storybook";
+
+export default {
+  title: "Components/{{{NAME}}}",
+  decorators: [Decorator],
+  component: {{{NAME}}},
+};
+
+export const Primary = (args: Parameters<typeof {{{NAME}}}>[0]) => (
+  <>
+    <{{{NAME}}} {...args}></{{{NAME}}}>
+  </>
+);
+Primary.parameters = {
+  viewMode: "docs",
+};

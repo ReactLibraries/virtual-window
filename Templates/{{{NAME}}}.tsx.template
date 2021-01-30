@@ -1,0 +1,13 @@
+import React, { FC } from "react";
+import { Root } from "./{{{NAME}}}.styled";
+
+type Props = {};
+
+/**
+ * {{{NAME}}}
+ *
+ * @param {Props} { }
+ */
+export const {{{NAME}}}: FC<Props> = ({}) => {
+  return <Root></Root>;
+};

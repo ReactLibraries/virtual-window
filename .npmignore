@@ -1,0 +1,15 @@
+
+node_modules
+/bin
+/src
+/__screenshots__
+/Templates
+.gitignore
+yarn.lock
+tsconfig.json
+.eslintrc.json
+.github
+.storybook
+storybook-static
+!captures/*
+*.log

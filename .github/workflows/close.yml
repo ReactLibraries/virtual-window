@@ -1,0 +1,47 @@
+name: Close pull request
+on:
+  pull_request:
+    types: [closed]
+jobs:
+  Close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set env
+        run: |
+          echo export BRANCH=`echo ${GITHUB_HEAD_REF} | sed -e 's/\//-/g'`--`echo ${GITHUB_BASE_REF} | sed -e 's/\//-/g'` >> ~/.env
+      - name: Git init
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          TARGET_PATH: captures
+        run: |
+          source ~/.env
+          mkdir -p __gh-pages__
+          cd __gh-pages__
+          git init
+          git config --global user.name $GITHUB_ACTOR
+          git config --global user.email ${GITHUB_ACTOR}@git
+          git config core.sparsecheckout true
+          git remote add origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+          echo /${TARGET_PATH}/${BRANCH} > .git/info/sparse-checkout
+          echo /${TARGET_PATH}/index.txt >> .git/info/sparse-checkout
+          git pull origin gh-pages || true
+          git checkout -b gh-pages
+      - name: Delete gh-pages
+        env:
+          TARGET_PATH: captures
+        working-directory: ./__gh-pages__
+        run: |
+          source ~/.env
+          rm -rf ${TARGET_PATH}/${BRANCH} || true
+      - name: Save gh-pages
+        env:
+          TARGET_PATH: captures
+        working-directory: ./__gh-pages__
+        run: |
+          source ~/.env
+          for i in `seq 5` ; do
+            git ls-files | sed -r "s/^${TARGET_PATH}\/([^\/]+)\/.*/\1/;t;d" | sed /^${BRANCH}$/d | sort -u > ${TARGET_PATH}/index.txt
+            git add .
+            git commit -m "Close ${BRANCH}" || break
+            (git push origin gh-pages && break) || git reset --hard origin/gh-pages
+          done
