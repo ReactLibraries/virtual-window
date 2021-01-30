@@ -1,0 +1,6 @@
+
+:{$PORT}
+root * /app
+file_server
+encode zstd gzip
+
