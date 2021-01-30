@@ -69,6 +69,7 @@ export type WindowParams = {
   width: number;
   height: number;
   state: WindowState;
+  init: boolean;
 };
 
 export type ActionType =

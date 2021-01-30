@@ -46,7 +46,7 @@ export const useWindow = (windowParams: Props | (() => Props)) => {
       nodeSize: { width, height },
       relativePoint: { x: 0, y: 0 },
       state,
-      real: { active: false, x, y, width, height, state: "close" },
+      real: { active: false, x, y, width, height, state: "close", init: false },
     })
   );
 
@@ -60,6 +60,10 @@ export const useWindow = (windowParams: Props | (() => Props)) => {
     addEventListener("touchstart", onTouchStart, {
       passive: false,
     });
+    setParams({
+      ...params,
+      real: { ...params.real, init: true },
+    });
     return () => {
       removeEventListener("mouseup", onMouseUp);
       removeEventListener("touchend", onMouseUp);
@@ -68,17 +72,16 @@ export const useWindow = (windowParams: Props | (() => Props)) => {
       removeEventListener("touchstart", onTouchStart);
     };
   }, []);
-
   useEffect(() => {
     const node = ref?.current;
     if (!node) return;
     switch (params.state) {
       case "max":
         if (params.real.state !== params.state)
-          setParams({
+          setParams((params) => ({
             ...params,
             real: { ...params.real, state: params.state },
-          });
+          }));
         node.style.animation = "Max 0.5s ease 0s 1 forwards";
         break;
       case "min":
@@ -91,10 +94,10 @@ export const useWindow = (windowParams: Props | (() => Props)) => {
         break;
       case "normal":
         if (params.real.state !== params.state)
-          setParams({
+          setParams((params) => ({
             ...params,
             real: { ...params.real, state: params.state },
-          });
+          }));
         if (params.real.state === "max")
           node.style.animation = "Restore 0.5s ease 0s forwards";
         else if (params.real.state === "min") {

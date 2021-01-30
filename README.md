@@ -6,4 +6,4 @@ VirtualWindow for React
 
 ## Storybook
 
-<https://react-liblary.github.io/virtual-window/>  
+[Storybook](https://reactlibraries.github.io/virtual-window/captures/master/stories/?path=/docs/components-virtualwindow--primary)  

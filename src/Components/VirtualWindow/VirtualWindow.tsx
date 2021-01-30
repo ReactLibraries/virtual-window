@@ -49,7 +49,7 @@ interface Props {
 }
 
 /**
- * Windowコンポーネント
+ * Window component
  *
  * @param {Props}
  * @return {*}
@@ -87,10 +87,11 @@ export const VirtualWindow: FC<Props> = ({
     baseY,
     x,
     y,
-    titleSize: titleSize,
+    titleSize,
     width,
     height,
     state,
+    init: false,
   }));
   useEffect(() => {
     if (refDispatch) refDispatch.current = dispatch;
@@ -109,6 +110,7 @@ export const VirtualWindow: FC<Props> = ({
         width: `${params.width}px`,
         height: `${params.height}px`,
         position: overlapped ? "fixed" : "absolute",
+        visibility: params.init ? "visible" : "hidden",
       }}
     >
       {titleEnable && (

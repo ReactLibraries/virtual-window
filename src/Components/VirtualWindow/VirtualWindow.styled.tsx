@@ -8,7 +8,6 @@ export const Root = styled.div<Props>`
   flex-direction: column;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
   min-height: ${(p) => p.titleSize}px;
-
   @keyframes Show {
     0% {
       opacity: 0;
