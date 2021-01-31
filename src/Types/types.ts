@@ -63,12 +63,47 @@ export interface CustomEvent extends Event {
 }
 
 export type WindowParams = {
+  /**
+   * Window active
+   *
+   * @type {boolean}
+   */
   active: boolean;
+  /**
+   * Current x
+   *
+   * @type {number}
+   */
   x: number;
+  /**
+   * Current y
+   *
+   * @type {number}
+   */
   y: number;
+  /**
+   * Current width
+   *
+   * @type {number}
+   */
   width: number;
+  /**
+   * Current height
+   *
+   * @type {number}
+   */
   height: number;
+  /**
+   * Current state
+   *
+   * @type {WindowState}
+   */
   state: WindowState;
+  /**
+   * Initial display
+   *
+   * @type {boolean}
+   */
   init: boolean;
 };
 
