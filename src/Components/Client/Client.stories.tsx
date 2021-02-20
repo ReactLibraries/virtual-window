@@ -10,7 +10,7 @@ export default {
 
 export const Primary = (args: Parameters<typeof Client>[0]) => (
   <>
-    <Client {...args}>コンテンツ</Client>
+    <Client {...args}>Contents</Client>
   </>
 );
 Primary.parameters = {

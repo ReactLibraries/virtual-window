@@ -16,8 +16,8 @@ type Props = {
    */
   src: string;
   /**
-   *normal:通常アイコン
-   *button:ボタン用アイコン
+   *normal: Normal icon
+   *button: Button icon
    *
    * @type {IconType}
    */
@@ -30,7 +30,7 @@ type Props = {
 };
 
 /**
- *アイコン表示用
+ * For icon display
  *
  * @param {*} { src, type = "normal", onClick }
  */

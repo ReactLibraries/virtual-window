@@ -20,14 +20,14 @@ export const Borders: PartsType[] = [
  */
 interface Props {
   /**
-   *サイズ変更枠の太さ
+   * Resize frame thickness
    *
    * @type {number}
    * @memberof Props
    */
   resizeBold?: number;
   /**
-   *ターゲットの表示フレームサイズ
+   * Target display frame size
    *
    * @type {number}
    * @memberof Props
