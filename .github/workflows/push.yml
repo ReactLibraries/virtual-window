@@ -99,9 +99,12 @@ jobs:
         with:
           name: Storybook
           path: storybook-static
+      - name: Install Japanese font
+        run: sudo apt-get install fonts-ipafont-gothic fonts-ipafont-mincho
       - name: Screenshot
         run: |
           source ~/.env
+
           yarn screenshot
           yarn reg-cli __screenshots__ screenshots __image_diff__ -J __image_diff__/index.json -I -M 0.1
           jq -c ".target = \"$TARGET\"" __image_diff__/index.json > index.json

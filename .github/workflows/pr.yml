@@ -68,6 +68,8 @@ jobs:
         with:
           name: Storybook
           path: storybook-static
+      - name: Install Japanese font
+        run: sudo apt-get install fonts-ipafont-gothic fonts-ipafont-mincho
       - name: Screenshot
         run: |
           source ~/.env
