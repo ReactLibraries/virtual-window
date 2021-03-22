@@ -5,6 +5,7 @@ jobs:
   Modules:
     name: Modules
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v2
       - name: Cache modules(yarn.lock)
@@ -38,6 +39,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Ruby 2.7.0
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.0
+          bundler-cache: true
       - name: Cache modules(yarn.lock)
         id: cache
         uses: actions/cache@v2
@@ -61,7 +67,8 @@ jobs:
           key: ${{ runner.OS }}-build-${{ hashFiles('yarn.lock') }}
           restore-keys: ${{ runner.OS }}-build-${{ env.cache-name }}
       - name: Build storybook
-        run: yarn storybook:build
+        run: |
+          yarn storybook:build
       - uses: actions/upload-artifact@v2
         with:
           name: Storybook
@@ -104,7 +111,6 @@ jobs:
       - name: Screenshot
         run: |
           source ~/.env
-
           yarn screenshot
           yarn reg-cli __screenshots__ screenshots __image_diff__ -J __image_diff__/index.json -I -M 0.1
           jq -c ".target = \"$TARGET\"" __image_diff__/index.json > index.json
@@ -152,5 +158,6 @@ jobs:
             git ls-files | sed -r "s/^${TARGET_PATH}\/([^\/]+)\/.*/\1/;t;d" | echo -e "`cat`\n${BRANCH}" | sort -u > ${TARGET_PATH}/index.txt
             git add .
             git commit -m "Create gh-pages(${BRANCH})" || break
-            (git push origin gh-pages && break) || git reset --hard origin/gh-pages
+            (git push origin gh-pages && break) || (git fetch origin;git reset --hard origin/gh-pages)
+            sleep 5
           done

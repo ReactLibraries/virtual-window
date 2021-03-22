@@ -5,6 +5,7 @@ on:
 jobs:
   Delete_snapshot:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Set env
         run: |
@@ -43,5 +44,6 @@ jobs:
             git ls-files | sed -r "s/^${TARGET_PATH}\/([^\/]+)\/.*/\1/;t;d" | sed /^${BRANCH}$/d | sort -u > ${TARGET_PATH}/index.txt
             git add .
             git commit -m "Delete ${BRANCH}" || break
-            (git push origin gh-pages && break) || git reset --hard origin/gh-pages
+            (git push origin gh-pages && break) || (git fetch origin;git reset --hard origin/gh-pages)
+            sleep 5
           done
