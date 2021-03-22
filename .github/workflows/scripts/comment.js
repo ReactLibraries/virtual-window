@@ -5,7 +5,7 @@ const { GITHUB_REF, GITHUB_REPOSITORY, GITHUB_TOKEN,GITHUB_HEAD_REF ,GITHUB_BASE
 const num = GITHUB_REF.split("/")[2];
 const rep = GITHUB_REPOSITORY.split("/");
 const branch = `${GITHUB_HEAD_REF.replace(/\//,'-')}--${GITHUB_BASE_REF.replace(/\//,'-')}`;
-const url = `https://${rep[0]}.github.io/${rep[1]}/??branch=${branch}`;
+const url = `https://${rep[0]}.github.io/${rep[1]}/?branch=${branch}`;
 
 const readFileList = (pathName) =>
   fs.promises

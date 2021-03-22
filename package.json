@@ -1,6 +1,6 @@
 {
   "name": "@react-libraries/virtual-window",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "license": "MIT",
   "author": "SoraKumo <info@croud.jp>",
@@ -74,5 +74,11 @@
     "url": "https://github.com/ReactLibraries/virtual-window/issues"
   },
   "homepage": "https://github.com/ReactLibraries/virtual-window#readme",
-  "keywords": []
+  "keywords": [
+    "react",
+    "vertual-window",
+    "window-system",
+    "dialog",
+    "typescript"
+  ]
 }

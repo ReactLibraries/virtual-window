@@ -19,16 +19,16 @@ Primary.parameters = {
 export const Active = () => (
   <>
     <TitleBar titleSize={32} active>
-      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest
     </TitleBar>
     <TitleBar titleSize={32} active>
-      通常時
+      Normal time
     </TitleBar>
     <TitleBar titleSize={32} active state="max">
-      最大化
+      Maximize
     </TitleBar>
     <TitleBar titleSize={32} active state="min">
-      最小化
+      Minimize
     </TitleBar>
   </>
 );
@@ -36,22 +36,22 @@ export const Active = () => (
 export const Normal64 = () => (
   <>
     <TitleBar titleSize={64}>
-      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest
     </TitleBar>
     <TitleBar titleSize={64}>通常時</TitleBar>
     <TitleBar titleSize={64} state="max">
-      最大化
+      Maximize
     </TitleBar>
     <TitleBar titleSize={64} state="min">
-      最小化
+      Minimize
     </TitleBar>
   </>
 );
 
 export const Buttons = () => (
   <>
-    <TitleBar buttons={{ min: false }}>最小化アイコン無し</TitleBar>
-    <TitleBar buttons={{ max: false }}>最大化アイコン無し</TitleBar>
-    <TitleBar buttons={{ close: false }}>Closeアイコン無し</TitleBar>
+    <TitleBar buttons={{ min: false }}>No minimize icon</TitleBar>
+    <TitleBar buttons={{ max: false }}>No maximize icon</TitleBar>
+    <TitleBar buttons={{ close: false }}>No Close icon</TitleBar>
   </>
 );

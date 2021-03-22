@@ -1,7 +1,7 @@
 import * as path from "path";
 import { Configuration } from "webpack";
 import { createTransformer } from "typescript-plugin-styled-components";
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 const config: Configuration = {
   mode: "production",
