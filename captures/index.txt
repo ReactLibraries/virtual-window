@@ -1,5 +1,4 @@
 feature-fix-actions
 feature-fix-actions--master
 feature-fix-text
-feature-fix-text--master
 master
