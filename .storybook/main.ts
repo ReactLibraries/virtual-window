@@ -1,6 +1,7 @@
-import type { StorybookConfig } from "@storybook/core/types";
-
 module.exports = {
+  core: {
+    builder: "webpack5",
+  },
   stories: ["../src/**/*.stories.@(tsx)"],
   addons: [
     "@storybook/addon-storysource",
@@ -9,4 +10,4 @@ module.exports = {
     "@storybook/addon-viewport",
     "storycap",
   ],
-} as StorybookConfig;
+};
