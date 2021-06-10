@@ -453,10 +453,12 @@ export const useWindow = (windowParams: Props | (() => Props)) => {
           height: parentHeight,
         };
       } else {
-        const { realX: x, realY: y, width, height } = getLimitWindow(
-          parent,
-          real
-        );
+        const {
+          realX: x,
+          realY: y,
+          width,
+          height,
+        } = getLimitWindow(parent, real);
         newReal = { ...real, x, y, width, height };
       }
     }
