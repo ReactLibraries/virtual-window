@@ -24,7 +24,7 @@ Primary.parameters = {
 };
 export const ParentAndChild = () => (
   <>
-    <VirtualWindow title="Top Window1" x={10} y={10}>
+    <VirtualWindow title="Top Window1" x={10} y={10} overlapped={true}>
       contents
       <VirtualWindow
         title="Child Window(Client)"

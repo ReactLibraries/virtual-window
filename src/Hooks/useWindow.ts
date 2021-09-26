@@ -188,10 +188,13 @@ export const useWindow = (windowParams: Props | (() => Props)) => {
       ref.current.addEventListener("animationend", onAnimationEnd);
       const resizeObserver = new ResizeObserver(onParentSize);
       const parentNode = ref.current.parentNode as HTMLElement;
-      parentNode && resizeObserver.observe(parentNode);
+      overlapped
+        ? addEventListener("resize", onParentSize)
+        : resizeObserver.observe(parentNode);
       active && setTimeout(() => foreground(ref.current!));
 
       return () => {
+        overlapped && removeEventListener("resize", onParentSize);
         resizeObserver.disconnect();
         ref.current?.removeEventListener("active", onActive);
         ref.current?.removeEventListener("animationend", onAnimationEnd);
@@ -236,7 +239,6 @@ export const useWindow = (windowParams: Props | (() => Props)) => {
   const getLimitWindow = (parent: HTMLElement, real: WindowParams) => {
     const parentWidth = overlapped ? window.innerWidth : parent.clientWidth;
     const parentHeight = overlapped ? window.innerHeight : parent.clientHeight;
-
     const realHeight = real.state === "min" ? titleSize : real.height;
     const width = real.width > parentWidth ? parentWidth : real.width;
     const height = realHeight > parentHeight ? parentHeight : realHeight;
@@ -248,9 +250,9 @@ export const useWindow = (windowParams: Props | (() => Props)) => {
         : 0;
     const relativeY =
       baseY === "center"
-        ? (parentHeight - height) / 2
+        ? (parentHeight - real.height) / 2
         : baseY === "end"
-        ? parentHeight - height
+        ? parentHeight - real.height
         : 0;
     let realX = Math.max(real.x + relativeX, 0);
     let realY = Math.max(real.y + relativeY, 0);
