@@ -1,3 +1,2 @@
 feature-fix-actions--master
-feature-fix-min-position
 master
