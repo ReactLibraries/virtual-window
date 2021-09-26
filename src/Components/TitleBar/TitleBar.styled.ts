@@ -40,7 +40,7 @@ export const Root = styled.div<Props>`
     text-overflow: ellipsis;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
-    font-size: 24px;
+    font-size: 20px;
     padding: 0px 0.5em;
     white-space: nowrap;
   }
