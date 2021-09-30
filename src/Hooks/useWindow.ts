@@ -375,7 +375,8 @@ export const useWindow = (windowParams: Props | (() => Props)) => {
                 return params;
             }
           });
-          e.preventDefault();
+          if (params.nodeType && params.nodeType !== "client")
+            e.preventDefault();
           return {
             ...params,
             relativePoint,
